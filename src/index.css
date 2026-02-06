@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background-color: #111827;
   min-height: 100dvh;
 }
