@@ -621,7 +621,7 @@ export default function App() {
         </div>
       )}
 
-      <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50)', width: '100%', maxWidth: '430px', background: '#1f2937', borderTop: '1px solid #374151', display: 'flex', justifyContent: 'space-around', padding: '12px 0', paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
+      <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '430px', background: '#1f2937', borderTop: '1px solid #374151', display: 'flex', justifyContent: 'space-around', padding: '12px 0', paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
         {[{ id: 'home', icon: HomeIcon, label: 'Home' }, { id: 'learn', icon: BookIcon, label: 'Library' }, { id: 'profile', icon: UserIcon, label: 'Profile' }].map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer', padding: '4px 16px' }}>
             <tab.icon active={activeTab === tab.id} />
