@@ -29,6 +29,8 @@ export async function getUserProgress(uid) {
   return snap.exists() ? snap.data() : null;
 }
 
-export async function saveUserProgress(uid, xp, completedLessons) {
-  return setDoc(doc(db, 'users', uid), { xp, completedLessons, updatedAt: serverTimestamp() }, { merge: true });
+export async function saveUserProgress(uid, xp, completedLessons, missedQuestions = null) {
+  const data = { xp, completedLessons, updatedAt: serverTimestamp() };
+  if (missedQuestions !== null) data.missedQuestions = missedQuestions;
+  return setDoc(doc(db, 'users', uid), data, { merge: true });
 }
