@@ -7,6 +7,8 @@ import HomeTab from './components/HomeTab';
 import LibraryTab from './components/LibraryTab';
 import ProfileTab from './components/ProfileTab';
 import QuizScreen from './components/QuizScreen';
+import FlashCardScreen from './components/FlashCardScreen';
+import { buildDeck } from './data/flashcards';
 import DebugPanel from './components/DebugPanel';
 
 export default function App() {
@@ -22,6 +24,9 @@ export default function App() {
   const [isReview, setIsReview] = useState(false);
   const [isReplay, setIsReplay] = useState(false);
   const [reviewQuestions, setReviewQuestions] = useState([]);
+
+  // Flash card state
+  const [flashCardDeck, setFlashCardDeck] = useState(null);
 
   useEffect(() => {
     return onAuthStateChanged(auth, async (firebaseUser) => {
@@ -48,6 +53,10 @@ export default function App() {
     setIsReview(false);
     setIsReplay(status === 'completed');
     setReviewQuestions([]);
+  };
+
+  const handleStartFlashCards = (category) => {
+    setFlashCardDeck(buildDeck(category));
   };
 
   const handleStartReview = () => {
@@ -161,6 +170,16 @@ export default function App() {
     );
   }
 
+  // Flash card screen
+  if (flashCardDeck) {
+    return (
+      <FlashCardScreen
+        deck={flashCardDeck}
+        onClose={() => setFlashCardDeck(null)}
+      />
+    );
+  }
+
   // Quiz/Review/Replay screen
   if (currentLesson) {
     return (
@@ -193,7 +212,7 @@ export default function App() {
         />
       )}
 
-      {activeTab === 'learn' && <LibraryTab />}
+      {activeTab === 'learn' && <LibraryTab onStartFlashCards={handleStartFlashCards} />}
 
       {activeTab === 'profile' && (
         <ProfileTab user={user} userXp={userXp} />

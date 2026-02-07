@@ -7,6 +7,7 @@ const categories = [
   { id: 'strategies', name: '\u{1F3AF} Strategies', lessons: allLessons.filter(l => l.category === 'strategies') },
   { id: 'risk', name: '\u{1F6E1}\u{FE0F} Risk Management', lessons: allLessons.filter(l => l.category === 'risk') },
   { id: 'real-world', name: '\u{1F30D} Real World', lessons: allLessons.filter(l => l.category === 'real-world') },
+  { id: 'advanced', name: '\u{1F9E0} Advanced', lessons: allLessons.filter(l => l.category === 'advanced') },
 ];
 
 export default function HomeTab({ userXp, completedLessons, missedQuestions, onStartLesson, onStartReview }) {

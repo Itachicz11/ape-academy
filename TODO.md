@@ -4,9 +4,9 @@
 
 | Metric | Value |
 |--------|-------|
-| Lessons | 20 (3 basics, 3 greeks, 6 strategies, 4 risk mgmt, 4 real-world) |
-| Library cards | 5 greeks + 13 strategies + 22 glossary + 7 common mistakes |
-| Payoff diagrams | 13 interactive strategies |
+| Lessons | 23 (3 basics, 3 greeks, 6 strategies, 4 risk, 4 real-world, 3 advanced) |
+| Library cards | 5 greeks + 19 strategies + 22 glossary + 7 common mistakes |
+| Payoff diagrams | 16 interactive strategies |
 | Components | 9 (`App` + 8 in `components/`) |
 
 ---
@@ -26,6 +26,9 @@
 - [x] 5 new payoff diagrams: strangle, bull put, bear call, butterfly, + credit spreads
 - [x] Library expansion: Rho greek, 3 strategy cards, 11 glossary terms, 7 common mistakes
 - [x] "Mistakes" sub-tab in Library
+- [x] Advanced Strategies lessons (3): calendar/diagonal, ratio spreads, jade lizard/BWB
+- [x] 3 new payoff diagrams: ratio spread, jade lizard, broken-wing butterfly
+- [x] 6 new strategy cards: calendar, diagonal, ratio, jade lizard, BWB, + existing updates
 
 ---
 
@@ -38,10 +41,7 @@
 
 - [x] ~~**Risk Management** category (4 lessons)~~ — position sizing, portfolio greeks, cut losses, margin
 - [x] ~~**Real-World Scenarios** category (4 lessons)~~ — earnings, meme stocks, dividends, rolling
-- [ ] **Advanced Strategies** category (2-3 lessons)
-  - Calendar spreads & diagonals
-  - Ratio spreads
-  - Jade lizard / broken-wing butterfly
+- [x] ~~**Advanced Strategies** category (3 lessons)~~ — calendar/diagonal, ratio spreads, jade lizard/broken-wing butterfly
 
 </details>
 
@@ -51,9 +51,12 @@
 - [x] ~~Long strangle~~
 - [x] ~~Bull put spread (credit spread)~~
 - [x] ~~Bear call spread (credit spread)~~
-- [ ] Calendar spread (needs time-to-expiry dimension)
+- [ ] Calendar spread (needs time-to-expiry dimension — at-expiry approximation not meaningful)
 - [x] ~~Butterfly spread~~
 - [ ] The Wheel (multi-phase — may need special treatment)
+- [x] ~~Ratio spread (1:2 call)~~
+- [x] ~~Jade lizard~~
+- [x] ~~Broken-wing butterfly~~
 
 </details>
 
@@ -173,12 +176,12 @@ src/
   main.jsx                 ← React root + PWA registration
   index.css                ← Reset + body background
   data/
-    lessons.js             ← 20 lessons, 60 questions
+    lessons.js             ← 23 lessons, 69 questions
     library.js             ← greeks, strategies, glossary, common mistakes
-    payoffs.js             ← 13 payoff diagram configs
+    payoffs.js             ← 16 payoff diagram configs
   components/
     icons.jsx              ← 5 SVG icon components
-    HomeTab.jsx            ← home screen + review prompt (5 categories)
+    HomeTab.jsx            ← home screen + review prompt (6 categories)
     LibraryTab.jsx         ← 5 sub-tabs (payoffs/greeks/strategies/mistakes/glossary)
     ProfileTab.jsx         ← auth + stats display
     QuizScreen.jsx         ← quiz/review/replay flow
@@ -193,5 +196,5 @@ src/
 | `HomeTab.jsx` | ~120 | Lesson list, progress, review prompt |
 | `LibraryTab.jsx` | ~175 | Reference content with 5 sub-tabs |
 | `PayoffDiagram.jsx` | ~140 | P&L math + SVG rendering |
-| `lessons.js` | ~500 | All lesson/question content (20 lessons) |
-| `library.js` | ~260 | Reference cards + common mistakes |
+| `lessons.js` | ~540 | All lesson/question content (23 lessons) |
+| `library.js` | ~310 | Reference cards + common mistakes |

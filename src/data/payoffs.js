@@ -114,6 +114,40 @@ const strategies = [
     ],
     defaultRange: [35, 65],
   },
+  {
+    id: 'ratio-call-spread',
+    name: '1:2 Call Ratio Spread',
+    description: 'Buy 1 ATM call, sell 2 OTM calls. Cheap or free entry but naked upside risk beyond the short strikes.',
+    legs: [
+      { type: 'call', direction: 'buy', strike: 50, premium: 4 },
+      { type: 'call', direction: 'sell', strike: 55, premium: 2 },
+      { type: 'call', direction: 'sell', strike: 55, premium: 2 },
+    ],
+    defaultRange: [40, 70],
+  },
+  {
+    id: 'jade-lizard',
+    name: 'Jade Lizard',
+    description: 'Short put + short call spread. Credit exceeds call spread width, eliminating upside risk. Downside risk below put strike minus credit.',
+    legs: [
+      { type: 'put', direction: 'sell', strike: 45, premium: 3 },
+      { type: 'call', direction: 'sell', strike: 55, premium: 2.5 },
+      { type: 'call', direction: 'buy', strike: 60, premium: 1 },
+    ],
+    defaultRange: [30, 70],
+  },
+  {
+    id: 'broken-wing-butterfly',
+    name: 'Broken-Wing Butterfly',
+    description: 'Butterfly with unequal wings. Can enter for a credit but accepts risk on the wider side. Directional lean.',
+    legs: [
+      { type: 'put', direction: 'buy', strike: 40, premium: 1 },
+      { type: 'put', direction: 'sell', strike: 50, premium: 4 },
+      { type: 'put', direction: 'sell', strike: 50, premium: 4 },
+      { type: 'put', direction: 'buy', strike: 55, premium: 6 },
+    ],
+    defaultRange: [30, 65],
+  },
 ];
 
 export default strategies;

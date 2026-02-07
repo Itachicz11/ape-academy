@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { greekCards, strategyCards, glossaryTerms, commonMistakes } from '../data/library';
+import { deckCounts } from '../data/flashcards';
 import strategies from '../data/payoffs';
 import PayoffDiagram from './PayoffDiagram';
 
 const subTabs = [
+  { id: 'flashcards', label: 'Flash Cards' },
   { id: 'payoffs', label: 'Payoffs' },
   { id: 'greeks', label: 'Greeks' },
   { id: 'strategies', label: 'Strategies' },
@@ -11,8 +13,16 @@ const subTabs = [
   { id: 'glossary', label: 'Glossary' },
 ];
 
-export default function LibraryTab() {
-  const [activeSubTab, setActiveSubTab] = useState('payoffs');
+const deckOptions = [
+  { id: 'greeks', label: 'Greeks', emoji: '\u0394', color: '#22c55e' },
+  { id: 'strategies', label: 'Strategies', emoji: '\u2694', color: '#8b5cf6' },
+  { id: 'glossary', label: 'Glossary', emoji: '\uD83D\uDCD6', color: '#3b82f6' },
+  { id: 'mistakes', label: 'Mistakes', emoji: '\u26A0', color: '#ef4444' },
+  { id: 'all', label: 'All Cards', emoji: '\uD83C\uDCCF', color: '#f59e0b' },
+];
+
+export default function LibraryTab({ onStartFlashCards }) {
+  const [activeSubTab, setActiveSubTab] = useState('flashcards');
   const [selectedStrategy, setSelectedStrategy] = useState(strategies[0].id);
   const [expandedTerm, setExpandedTerm] = useState(null);
 
@@ -39,6 +49,39 @@ export default function LibraryTab() {
           </button>
         ))}
       </div>
+
+      {/* Flash Cards sub-tab */}
+      {activeSubTab === 'flashcards' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <p style={{ color: '#9ca3af', fontSize: '14px', margin: '0 0 4px 0' }}>
+            Tap a deck to start studying. Flip cards, self-assess, repeat what you don't know.
+          </p>
+          {deckOptions.map(opt => (
+            <button
+              key={opt.id}
+              onClick={() => onStartFlashCards(opt.id)}
+              style={{
+                background: '#1f2937', border: '1px solid #374151', borderRadius: '12px',
+                padding: '16px', cursor: 'pointer', textAlign: 'left',
+                display: 'flex', alignItems: 'center', gap: '14px',
+              }}
+            >
+              <div style={{
+                width: '44px', height: '44px', borderRadius: '10px',
+                background: opt.color + '20', display: 'flex', alignItems: 'center',
+                justifyContent: 'center', fontSize: '22px', flexShrink: 0,
+              }}>
+                {opt.emoji}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ color: '#fff', fontSize: '15px', fontWeight: '600' }}>{opt.label}</div>
+                <div style={{ color: '#6b7280', fontSize: '13px', marginTop: '2px' }}>{deckCounts[opt.id]} cards</div>
+              </div>
+              <span style={{ color: '#6b7280', fontSize: '18px' }}>{'\u203A'}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Payoffs sub-tab */}
       {activeSubTab === 'payoffs' && (

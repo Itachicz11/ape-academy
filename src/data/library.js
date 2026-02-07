@@ -151,6 +151,46 @@ export const strategyCards = [
     breakeven: 'Lower strike + debit / Upper strike - debit',
     bestWhen: 'Neutral \u2014 expect stock to pin near middle strike at expiration.',
   },
+  {
+    name: 'Calendar Spread',
+    legs: 'Sell near-term option + buy far-term option (same strike)',
+    maxProfit: 'Difference in time decay rates (varies)',
+    maxLoss: 'Net debit paid',
+    breakeven: 'Depends on IV and time decay differential',
+    bestWhen: 'Neutral \u2014 expect stock to stay near strike. Want IV to rise after entry.',
+  },
+  {
+    name: 'Diagonal Spread',
+    legs: 'Buy far-term option + sell near-term option (different strikes)',
+    maxProfit: 'Varies \u2014 depends on strikes and expirations',
+    maxLoss: 'Net debit paid (if long leg is deeper ITM)',
+    breakeven: 'Varies by configuration',
+    bestWhen: 'Directional lean + time decay collection. Poor man\'s covered call is a popular variant.',
+  },
+  {
+    name: 'Ratio Spread (1:2)',
+    legs: 'Buy 1 ATM option + sell 2 OTM options',
+    maxProfit: 'Short strike - long strike - net debit (at short strike)',
+    maxLoss: 'Unlimited beyond short strikes (naked exposure)',
+    breakeven: 'Short strike + max profit (upside) / Long strike + debit (downside)',
+    bestWhen: 'Expect moderate move to a specific price target. Not for beginners.',
+  },
+  {
+    name: 'Jade Lizard',
+    legs: 'Sell put + sell call spread (credit > call spread width)',
+    maxProfit: 'Total credit received',
+    maxLoss: 'Put strike - total credit (downside only, no upside risk)',
+    breakeven: 'Short put strike - total credit',
+    bestWhen: 'Neutral to bullish \u2014 eliminates upside risk entirely. Advanced theta play.',
+  },
+  {
+    name: 'Broken-Wing Butterfly',
+    legs: 'Butterfly with unequal wing widths',
+    maxProfit: 'Narrow wing width - debit (or full credit if entered for credit)',
+    maxLoss: 'Wide wing width - credit (on the wider side only)',
+    breakeven: 'Varies by wing configuration',
+    bestWhen: 'Directional lean near a target price. Can enter for credit. Popular with SPX traders.',
+  },
 ];
 
 export const glossaryTerms = [

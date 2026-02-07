@@ -459,6 +459,75 @@ const allLessons = [
       ], explanation: "Rolling is for when your thesis is intact but timing was off. If the fundamental reason for the trade is dead (bad earnings, broken support, sector collapse), rolling just delays the inevitable loss. Know when to roll and when to fold." },
     ]
   },
+  {
+    id: 21, title: "Calendar & Diagonal Spreads", subtitle: "Playing the time game \u{1F4C5}", xp: 125, category: "advanced",
+    questions: [
+      { question: "What is a calendar spread?", options: [
+        { text: "Buy and sell options at different strikes, same expiry", correct: false },
+        { text: "Buy a longer-dated option and sell a shorter-dated option at the same strike", correct: true },
+        { text: "Buy calls and puts at the same strike", correct: false },
+        { text: "A strategy that only works on Mondays", correct: false },
+      ], explanation: "Calendar spread = same strike, different expirations. You sell the near-term option (faster decay) and buy the far-term option (slower decay). You profit from the difference in time decay rates. It's a theta play with a twist." },
+      { question: "Why does a calendar spread profit from high IV?", options: [
+        { text: "It doesn't \u2014 calendars want low IV", correct: false },
+        { text: "The long-dated leg has more vega, so an IV increase benefits the spread", correct: true },
+        { text: "High IV makes the short leg expire faster", correct: false },
+        { text: "Calendar spreads are immune to IV changes", correct: false },
+      ], explanation: "The long-dated option has higher vega than the short-dated one. When IV rises, the long leg gains more than the short leg loses, netting you a profit. Calendars are long vega \u2014 they want IV to rise after you enter." },
+      { question: "How does a diagonal spread differ from a calendar?", options: [
+        { text: "They're the same thing", correct: false },
+        { text: "Diagonals use different expirations AND different strikes", correct: true },
+        { text: "Diagonals only use puts", correct: false },
+        { text: "Diagonals have unlimited risk", correct: false },
+      ], explanation: "Diagonal = different strikes + different expirations. Think of it as a calendar spread tilted with a directional bias. A poor man's covered call (buy deep ITM LEAPS call, sell short-term OTM call) is a popular diagonal." },
+    ]
+  },
+  {
+    id: 22, title: "Ratio Spreads", subtitle: "Unbalanced on purpose \u{2696}\u{FE0F}", xp: 150, category: "advanced",
+    questions: [
+      { question: "What makes a ratio spread different from a regular vertical spread?", options: [
+        { text: "It uses options at different expirations", correct: false },
+        { text: "You buy and sell different quantities of options (e.g., buy 1, sell 2)", correct: true },
+        { text: "It only uses put options", correct: false },
+        { text: "There is no difference", correct: false },
+      ], explanation: "Ratio spreads are unbalanced \u2014 you buy fewer options than you sell (or vice versa). A 1:2 call ratio spread: buy 1 ATM call, sell 2 OTM calls. The extra short leg can reduce cost to zero (or even a credit) but introduces risk beyond the short strikes." },
+      { question: "You enter a 1:2 call ratio spread: buy 1 $50 call, sell 2 $55 calls. Where is the risk?", options: [
+        { text: "Below $50 \u2014 you lose the debit paid", correct: false },
+        { text: "Between $50-$55 \u2014 the spread can't profit there", correct: false },
+        { text: "Above $60 \u2014 the extra naked short call creates unlimited upside risk", correct: true },
+        { text: "There is no risk \u2014 the premium offsets everything", correct: false },
+      ], explanation: "You're net short 1 call above $55. The bought $50 call covers one of the $55 calls, but the second $55 call is effectively naked. Above $60, losses accelerate with no cap. Max profit is at $55 at expiration. Know your risk zones." },
+      { question: "When are ratio spreads most commonly used?", options: [
+        { text: "When you expect a stock to stay flat forever", correct: false },
+        { text: "When you expect a moderate move to a specific target price", correct: true },
+        { text: "When you want maximum leverage", correct: false },
+        { text: "Only during earnings week", correct: false },
+      ], explanation: "Ratio spreads work best when you have a price target. The max profit zone is at the short strike at expiration. If you think a stock moves from $50 to $55 and stops, a 1:2 call ratio is perfect. The trade is: conviction in a specific price, not just direction." },
+    ]
+  },
+  {
+    id: 23, title: "Jade Lizard & Broken-Wing Butterfly", subtitle: "Exotic but practical \u{1F98E}", xp: 150, category: "advanced",
+    questions: [
+      { question: "What is a jade lizard?", options: [
+        { text: "A straddle with an extra call", correct: false },
+        { text: "A short put + short call spread, structured for no upside risk", correct: true },
+        { text: "A butterfly with all puts", correct: false },
+        { text: "A type of lizard-themed meme stock", correct: false },
+      ], explanation: "Jade lizard = sell a put + sell a call spread (sell call + buy higher call). The key: total credit received > width of the call spread. This eliminates upside risk entirely. Downside risk exists if the stock drops below the short put minus credit." },
+      { question: "What makes a broken-wing butterfly different from a regular butterfly?", options: [
+        { text: "It uses 5 legs instead of 4", correct: false },
+        { text: "The wing widths are unequal, creating a directional bias and/or a credit", correct: true },
+        { text: "It can only be traded on indices", correct: false },
+        { text: "The wings are at the same strike", correct: false },
+      ], explanation: "Regular butterfly: equal wing widths ($45/$50/$55). Broken wing: unequal ($45/$50/$60). By widening one side, you can enter for a credit but accept risk on one side. It's a butterfly with a built-in directional lean. Popular with SPX traders." },
+      { question: "Why are these exotic strategies useful for experienced traders?", options: [
+        { text: "They always make money", correct: false },
+        { text: "They allow precise risk shaping \u2014 eliminating risk on one side while accepting it on another", correct: true },
+        { text: "They require less capital than basic strategies", correct: false },
+        { text: "They're simpler than covered calls", correct: false },
+      ], explanation: "Advanced strategies let you sculpt your risk profile. Jade lizard: no upside risk. Broken-wing butterfly: credit entry with targeted profit zone. The tradeoff is complexity and wider bid-ask spreads. Only use these once you're comfortable with basic spreads." },
+    ]
+  },
 ];
 
 export default allLessons;
