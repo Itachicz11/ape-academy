@@ -54,6 +54,7 @@ export const strategyCards = [
     maxLoss: 'Premium paid',
     breakeven: 'Strike + premium',
     bestWhen: 'Bullish \u2014 expect stock to rise significantly',
+    eli5: 'You pay a small fee for the RIGHT to buy shares at a set price later. Stock moons? You print tendies. Stock dumps? You only lose what you paid \u2014 like a concert ticket you never used.',
   },
   {
     name: 'Long Put',
@@ -62,6 +63,7 @@ export const strategyCards = [
     maxLoss: 'Premium paid',
     breakeven: 'Strike - premium',
     bestWhen: 'Bearish \u2014 expect stock to drop significantly',
+    eli5: 'You pay for the right to SELL shares at a set price. Stock tanks? You profit. Think of it as fire insurance on a house \u2014 except here you\u2019re hoping for the fire. Classic bear move.',
   },
   {
     name: 'Covered Call',
@@ -70,6 +72,7 @@ export const strategyCards = [
     maxLoss: 'Stock cost - premium (if stock goes to $0)',
     breakeven: 'Stock cost - premium received',
     bestWhen: 'Neutral to slightly bullish \u2014 generate income on shares you own',
+    eli5: 'You already own the shares, so you rent out the upside to someone else and collect premium. Like being a landlord for your stonks. The catch: if it rockets past your strike, those gains belong to your tenant now.',
   },
   {
     name: 'Cash-Secured Put',
@@ -78,6 +81,7 @@ export const strategyCards = [
     maxLoss: 'Strike - premium (if stock goes to $0)',
     breakeven: 'Strike - premium received',
     bestWhen: 'Neutral to bullish \u2014 want to buy stock at lower price or collect premium',
+    eli5: 'You get PAID to promise you\u2019ll buy a stock if it dips to a price you like. It\u2019s a limit order that pays you to wait. Either you keep the premium or buy shares at a discount. Win-win if you actually want the stock.',
   },
   {
     name: 'Bull Call Spread',
@@ -86,6 +90,7 @@ export const strategyCards = [
     maxLoss: 'Net debit paid',
     breakeven: 'Lower strike + net debit',
     bestWhen: 'Moderately bullish \u2014 defined risk, lower cost than naked call',
+    eli5: 'A long call with training wheels. You buy a call AND sell a higher one to offset the cost. Cheaper entry, but your gains are capped. For when you\u2019re bullish but not \u201Cto the moon\u201D bullish.',
   },
   {
     name: 'Bear Put Spread',
@@ -94,6 +99,7 @@ export const strategyCards = [
     maxLoss: 'Net debit paid',
     breakeven: 'Higher strike - net debit',
     bestWhen: 'Moderately bearish \u2014 defined risk, lower cost than naked put',
+    eli5: 'Same idea as a bull call spread, but for bears. Buy a put, sell a cheaper one below it. Defined risk, defined reward. Budget-friendly way to bet on a drop without needing the stock to go to zero.',
   },
   {
     name: 'Iron Condor',
@@ -102,6 +108,7 @@ export const strategyCards = [
     maxLoss: 'Width of wider spread - net credit',
     breakeven: 'Short put strike - credit / Short call strike + credit',
     bestWhen: 'Neutral \u2014 expect stock to stay in a range. Theta gang classic.',
+    eli5: 'You sell a call spread AND a put spread, betting the stock goes absolutely nowhere. Collect premium from both sides while everyone else panic-trades. The theta gang special \u2014 you make money from other apes\u2019 FOMO while the stock just vibes.',
   },
   {
     name: 'Long Straddle',
@@ -110,6 +117,7 @@ export const strategyCards = [
     maxLoss: 'Total premiums paid',
     breakeven: 'Strike \u00B1 total premium',
     bestWhen: 'Expect big move but unsure of direction (earnings, FDA)',
+    eli5: 'Buy a call AND a put at the same strike. You have no clue which way it\u2019s going, but you\u2019re convinced something big is about to happen. Earnings, FDA rulings, Elon tweeting \u2014 you just need a big move in EITHER direction to cover the cost of both.',
   },
   {
     name: 'Long Strangle',
@@ -118,6 +126,7 @@ export const strategyCards = [
     maxLoss: 'Total premiums paid',
     breakeven: 'Call strike + premium / Put strike - premium',
     bestWhen: 'Expect big move, cheaper than straddle but needs bigger move',
+    eli5: 'Budget straddle. Same idea \u2014 buy a call + put \u2014 but at different OTM strikes, so it\u2019s cheaper. Trade-off: you need an even BIGGER move to profit. For when you smell volatility but don\u2019t want to pay straddle prices.',
   },
   {
     name: 'The Wheel',
@@ -126,6 +135,7 @@ export const strategyCards = [
     maxLoss: 'Stock drops significantly while you hold',
     breakeven: 'Depends on accumulated premiums vs stock cost',
     bestWhen: 'Neutral to bullish on quality stocks you want to own long-term',
+    eli5: 'The premium income machine. Sell puts on stocks you want to own. Get assigned? Sell covered calls on those shares. Collect premium on the way down AND on the way up. Rinse and repeat. Works best on solid stonks you\u2019d hold anyway.',
   },
   {
     name: 'Bull Put Spread',
@@ -134,6 +144,7 @@ export const strategyCards = [
     maxLoss: 'Strike width - net credit',
     breakeven: 'Short put strike - net credit',
     bestWhen: 'Moderately bullish \u2014 defined risk credit strategy. Theta gang staple.',
+    eli5: 'The credit version of being bullish. Sell a put, buy a cheaper put below for protection. You collect premium upfront and keep it if the stock stays above your short strike. Get paid now, profit from doing nothing. This is the way.',
   },
   {
     name: 'Bear Call Spread',
@@ -142,6 +153,7 @@ export const strategyCards = [
     maxLoss: 'Strike width - net credit',
     breakeven: 'Short call strike + net credit',
     bestWhen: 'Moderately bearish \u2014 defined risk credit strategy.',
+    eli5: 'Credit strategy for bears. Sell a call, buy a higher one for protection. You keep the premium if the stock stays below your short call. The bull put spread\u2019s evil twin \u2014 same mechanics, opposite direction, same theta gang energy.',
   },
   {
     name: 'Long Call Butterfly',
@@ -150,6 +162,7 @@ export const strategyCards = [
     maxLoss: 'Net debit paid',
     breakeven: 'Lower strike + debit / Upper strike - debit',
     bestWhen: 'Neutral \u2014 expect stock to pin near middle strike at expiration.',
+    eli5: 'The sniper shot of options. You\u2019re betting the stock lands at one very specific price at expiration. Cheap to enter, big payout if you nail it, but the target zone is narrow. Three legs look complicated, but it\u2019s just a precision bet.',
   },
   {
     name: 'Calendar Spread',
@@ -158,6 +171,7 @@ export const strategyCards = [
     maxLoss: 'Net debit paid',
     breakeven: 'Depends on IV and time decay differential',
     bestWhen: 'Neutral \u2014 expect stock to stay near strike. Want IV to rise after entry.',
+    eli5: 'Time decay arbitrage. Sell a short-term option that rots fast, buy a longer-term one that rots slow, same strike. The front one melts faster than the back one, and you pocket the difference. Works best when the stock just parks itself right at your strike.',
   },
   {
     name: 'Diagonal Spread',
@@ -166,6 +180,7 @@ export const strategyCards = [
     maxLoss: 'Net debit paid (if long leg is deeper ITM)',
     breakeven: 'Varies by configuration',
     bestWhen: 'Directional lean + time decay collection. Poor man\'s covered call is a popular variant.',
+    eli5: 'Calendar spread\u2019s cooler cousin \u2014 different strikes AND different expirations. The classic setup is the \u201Cpoor man\u2019s covered call\u201D: buy a deep ITM LEAPS instead of 100 shares, sell short-term calls against it. Same income, fraction of the capital. Big brain energy.',
   },
   {
     name: 'Ratio Spread (1:2)',
@@ -174,6 +189,7 @@ export const strategyCards = [
     maxLoss: 'Unlimited beyond short strikes (naked exposure)',
     breakeven: 'Short strike + max profit (upside) / Long strike + debit (downside)',
     bestWhen: 'Expect moderate move to a specific price target. Not for beginners.',
+    eli5: 'Buy one option, sell two further out. The extra sold option pays for your entry. Looks like free money until the stock blows past your short strikes \u2014 then one of those sold options is naked and your losses are unlimited. The smooth-brain trap: looks free until it isn\u2019t.',
   },
   {
     name: 'Jade Lizard',
@@ -182,6 +198,7 @@ export const strategyCards = [
     maxLoss: 'Put strike - total credit (downside only, no upside risk)',
     breakeven: 'Short put strike - total credit',
     bestWhen: 'Neutral to bullish \u2014 eliminates upside risk entirely. Advanced theta play.',
+    eli5: 'Three-legged theta play that eliminates upside risk ENTIRELY. Sell a put, sell a call spread, and make sure total credit exceeds the call spread width. Stock moons? You literally cannot lose on the upside. Only downside risk remains. Advanced wrinkle-brain flex.',
   },
   {
     name: 'Broken-Wing Butterfly',
@@ -190,6 +207,7 @@ export const strategyCards = [
     maxLoss: 'Wide wing width - credit (on the wider side only)',
     breakeven: 'Varies by wing configuration',
     bestWhen: 'Directional lean near a target price. Can enter for credit. Popular with SPX traders.',
+    eli5: 'A butterfly with one wing stretched wider than the other. By making the wings unequal, you shift ALL the risk to one side and can sometimes enter for a credit. Directional bet near a target price with the other side totally risk-free. Popular with SPX income degens.',
   },
 ];
 

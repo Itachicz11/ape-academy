@@ -25,6 +25,7 @@ export default function LibraryTab({ onStartFlashCards }) {
   const [activeSubTab, setActiveSubTab] = useState('flashcards');
   const [selectedStrategy, setSelectedStrategy] = useState(strategies[0].id);
   const [expandedTerm, setExpandedTerm] = useState(null);
+  const [expandedStrategy, setExpandedStrategy] = useState(null);
 
   const strategy = strategies.find(s => s.id === selectedStrategy);
 
@@ -146,23 +147,40 @@ export default function LibraryTab({ onStartFlashCards }) {
       {/* Strategies sub-tab */}
       {activeSubTab === 'strategies' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {strategyCards.map(strat => (
-            <div key={strat.name} style={{ background: '#1f2937', borderRadius: '12px', padding: '16px' }}>
-              <h3 style={{ color: '#fff', fontSize: '16px', fontWeight: '600', margin: '0 0 10px 0' }}>{strat.name}</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {[
-                  ['Legs', strat.legs],
-                  ['Max Profit', strat.maxProfit],
-                  ['Max Loss', strat.maxLoss],
-                  ['Breakeven', strat.breakeven],
-                  ['Best When', strat.bestWhen],
-                ].map(([label, val]) => (
-                  <div key={label} style={{ display: 'flex', gap: '8px' }}>
-                    <span style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', minWidth: '76px', flexShrink: 0 }}>{label}</span>
-                    <span style={{ color: '#d1d5db', fontSize: '13px' }}>{val}</span>
+          {strategyCards.map((strat, i) => (
+            <div key={strat.name} style={{ background: '#1f2937', borderRadius: '12px', overflow: 'hidden' }}>
+              <button
+                onClick={() => setExpandedStrategy(expandedStrategy === i ? null : i)}
+                style={{
+                  width: '100%', background: 'none', border: 'none', padding: '16px',
+                  cursor: 'pointer', textAlign: 'left',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                }}
+              >
+                <h3 style={{ color: '#fff', fontSize: '16px', fontWeight: '600', margin: 0 }}>{strat.name}</h3>
+                <span style={{ color: '#6b7280', fontSize: '18px', transform: expandedStrategy === i ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s' }}>{'\u203A'}</span>
+              </button>
+              {expandedStrategy === i && (
+                <div style={{ padding: '0 16px 16px' }}>
+                  <div style={{ background: '#162030', borderRadius: '10px', padding: '12px 14px', marginBottom: '12px' }}>
+                    <p style={{ color: '#fbbf24', fontSize: '13px', lineHeight: '1.6', margin: 0, fontStyle: 'italic' }}>{strat.eli5}</p>
                   </div>
-                ))}
-              </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {[
+                      ['Legs', strat.legs],
+                      ['Max Profit', strat.maxProfit],
+                      ['Max Loss', strat.maxLoss],
+                      ['Breakeven', strat.breakeven],
+                      ['Best When', strat.bestWhen],
+                    ].map(([label, val]) => (
+                      <div key={label} style={{ display: 'flex', gap: '8px' }}>
+                        <span style={{ color: '#6b7280', fontSize: '12px', fontWeight: '600', minWidth: '76px', flexShrink: 0 }}>{label}</span>
+                        <span style={{ color: '#d1d5db', fontSize: '13px' }}>{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
